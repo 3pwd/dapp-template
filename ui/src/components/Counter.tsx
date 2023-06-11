@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { useNetwork, useWaitForTransaction } from 'wagmi'
-
 import {
   useCounterIncrement,
   useCounterNumber,
@@ -30,7 +29,7 @@ function SetNumber() {
   const [value, setValue] = useState('')
 
   const { config } = usePrepareCounterSetNumber({
-    args: value ? [BigInt(value)] : undefined,
+    args: value !== '' ? [BigInt(value)] : undefined,
     enabled: Boolean(value),
   })
   const { data, write } = useCounterSetNumber({
@@ -41,7 +40,7 @@ function SetNumber() {
   const { refetch } = useCounterNumber()
   const { isLoading } = useWaitForTransaction({
     hash: data?.hash,
-    onSuccess: () => refetch(),
+    onSuccess: async () => refetch(),
   })
 
   return (
@@ -52,7 +51,10 @@ function SetNumber() {
         onChange={(e) => setValue(e.target.value)}
         value={value}
       />
-      <button disabled={!write || isLoading} onClick={() => write?.()}>
+      <button
+        disabled={write === undefined || isLoading}
+        onClick={() => write?.()}
+      >
         Set
       </button>
       {isLoading && <ProcessingMessage hash={data?.hash} />}
@@ -67,12 +69,15 @@ function Increment() {
   const { refetch } = useCounterNumber()
   const { isLoading } = useWaitForTransaction({
     hash: data?.hash,
-    onSuccess: () => refetch(),
+    onSuccess: async () => refetch(),
   })
 
   return (
     <div>
-      <button disabled={!write || isLoading} onClick={() => write?.()}>
+      <button
+        disabled={write === undefined || isLoading}
+        onClick={() => write?.()}
+      >
         Increment
       </button>
       {isLoading && <ProcessingMessage hash={data?.hash} />}
@@ -86,7 +91,7 @@ function ProcessingMessage({ hash }: { hash?: `0x${string}` }) {
   return (
     <span>
       Processing transaction...{' '}
-      {etherscan && (
+      {etherscan !== undefined && hash !== undefined && (
         <a href={`${etherscan.url}/tx/${hash}`}>{etherscan.name}</a>
       )}
     </span>

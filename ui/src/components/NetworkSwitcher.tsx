@@ -12,10 +12,10 @@ export function NetworkSwitcher() {
     <div>
       <div>
         Connected to {chain?.name ?? chain?.id}
-        {chain?.unsupported && ' (unsupported)'}
+        {chain?.unsupported !== undefined && ' (unsupported)'}
       </div>
 
-      {switchNetwork && (
+      {switchNetwork !== undefined && (
         <div>
           {chains.map((x) =>
             x.id === chain?.id ? null : (
@@ -28,7 +28,7 @@ export function NetworkSwitcher() {
         </div>
       )}
 
-      <div>{error && (error as BaseError).shortMessage}</div>
+      <div>{error !== null && (error as BaseError).shortMessage}</div>
     </div>
   )
 }

@@ -4,10 +4,10 @@ import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
-
 import { publicProvider } from 'wagmi/providers/public'
 
-const walletConnectProjectId = '15d4c21cb519a86d0a3cdf1114cc56ec'
+// TODO
+const walletConnectProjectId = 'UPDATE'
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [

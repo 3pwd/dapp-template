@@ -28,7 +28,7 @@ export function Connect() {
           ))}
       </div>
 
-      {error && <div>{(error as BaseError).shortMessage}</div>}
+      {error !== null && <div>{(error as BaseError).shortMessage}</div>}
     </div>
   )
 }

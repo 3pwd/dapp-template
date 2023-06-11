@@ -9,7 +9,7 @@ export function Account() {
   return (
     <div>
       {ensName ?? address}
-      {ensName ? ` (${address})` : null}
+      {address !== undefined ? ` (${address})` : null}
     </div>
   )
 }
