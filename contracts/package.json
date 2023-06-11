@@ -8,6 +8,8 @@
   },
   "scripts": {
     "format": "prettier --check '**/*.sol'",
-    "format.fix": "prettier --write '**/*.sol'"
+    "format.fix": "prettier --write '**/*.sol'",
+    "lint": "solhint '**/*.sol'",
+    "lint.fix": "solhint --fix '**/*.sol'"
   }
 }
