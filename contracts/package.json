@@ -1,7 +1,7 @@
 {
   "name": "contracts",
   "scripts": {
-    "lint": "solhint",
+    "lint": "solhint '**/*.sol'",
     "format": "prettier --write '**/*.sol'"
   },
   "license": "MIT",
