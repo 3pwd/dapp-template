@@ -2,7 +2,9 @@
   "name": "dapp-template",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --check .",
+    "format.fix": "prettier --write .",
+    "lint": "eslint . --ext .js,.jsx,.sol,.ts,.tsx"
   },
   "author": "3pwd <me@3pwd.xyz>",
   "license": "MIT",

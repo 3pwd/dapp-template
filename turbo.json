@@ -2,15 +2,25 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
-      "outputs": [
-        ".next/**",
-        "!.next/cache/**"
-      ]
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
+      "inputs": ["src/**/*.{js,jsx,ts,tsx}", "contracts/**/*.sol"]
+    },
+    "format": {
       "inputs": [
         "src/**/*.{js,jsx,ts,tsx}",
-        "contracts/**/*.sol"
+        "contracts/{lib,script,src,test}/*.sol",
+        "!contracts/lib/forge-std/**/*",
+        "*.{json,md,yml,yaml}"
+      ]
+    },
+    "format.fix": {
+      "inputs": [
+        "src/**/*.{js,jsx,ts,tsx}",
+        "contracts/{lib,script,src,test}/*.sol",
+        "!contracts/lib/forge-std/**/*",
+        "**/*.{js,json,md,yml,yaml}"
       ]
     }
   }
