@@ -1,6 +1,5 @@
 {
   "name": "contracts",
-  "license": "MIT",
   "devDependencies": {
     "prettier-plugin-solidity": "^1.1.3",
     "solhint": "^3.4.1",
