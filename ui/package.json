@@ -5,6 +5,8 @@
     "build": "next build",
     "dev": "npm run wagmi && next dev",
     "dev:foundry": "npm run dev & wagmi generate --watch & npm run anvil",
+    "format": "prettier --config ../.prettierrc.yaml --ignore-path ../.prettierignore --check .",
+    "format.fix": "prettier --write --config ../.prettierrc.yaml --ignore-path ../.prettierignore .",
     "lint": "next lint",
     "lint.fix": "next lint --fix",
     "start": "next start",

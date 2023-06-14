@@ -13,7 +13,7 @@
     "lint": {
       "inputs": ["src/**/*.{js,jsx,ts,tsx}", "contracts/**/*.sol"]
     },
-    "//#_format": {
+    "format": {
       "inputs": [
         "*.{md,json,{j,t}s?(x),sol,y?(a)ml}",
         "{contracts,ui}/**/*.{md,json,{j,t}s?(x),sol,y?(a)ml}",
@@ -22,7 +22,7 @@
         "!contracts/out/**/*"
       ]
     },
-    "//#_format.fix": {
+    "format.fix": {
       "inputs": [
         "*.{md,json,{j,t}s?(x),sol,y?(a)ml}",
         "{contracts,ui}/**/*.{md,json,{j,t}s?(x),sol,y?(a)ml}",
