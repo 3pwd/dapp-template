@@ -1,6 +1,6 @@
 import { Account, Connect, Connected, Counter, NetworkSwitcher } from '~'
 
-export function Page() {
+export default function Page() {
   return (
     <>
       <h1>wagmi + Next.js + Foundry</h1>
@@ -17,5 +17,3 @@ export function Page() {
     </>
   )
 }
-
-export default Page
