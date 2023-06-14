@@ -1,8 +1,4 @@
-import { Account } from '../components/Account'
-import { Connect } from '../components/Connect'
-import { Connected } from '../components/Connected'
-import { Counter } from '../components/Counter'
-import { NetworkSwitcher } from '../components/NetworkSwitcher'
+import { Account, Connect, Connected, Counter, NetworkSwitcher } from '~'
 
 export function Page() {
   return (
