@@ -1,11 +1,17 @@
 {
   "name": "dapp-template",
-  "version": "1.0.0",
   "author": "3pwd <me@3pwd.xyz>",
   "license": "MIT",
   "devDependencies": {
     "@3pwd/prettier-config": "^1.0.1",
+    "@wagmi/cli": "^1.0.0",
+    "barrelsby": "^2.8.0",
     "eslint": "^8.42.0",
-    "turbo": "^1.10.3"
+    "turbo": "^1.10.3",
+    "wagmi": "^1.0.6"
+  },
+  "scripts": {
+    "barrels": "barrelsby --config .barrelsby.json",
+    "build": "turbo build"
   }
 }
