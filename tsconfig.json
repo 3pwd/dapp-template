@@ -12,7 +12,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
+    "incremental": true
   },
-  "include": ["wagmi.config.ts"],
+  "include": ["wagmi.config.ts"]
 }

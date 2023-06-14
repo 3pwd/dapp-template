@@ -12,6 +12,10 @@
   },
   "scripts": {
     "barrels": "barrelsby --config .barrelsby.json",
-    "build": "turbo build"
+    "build": "turbo build",
+    "_format": "prettier --check '**/*.{md,{j,t}s?(x),y?(a)ml,json,sol}'",
+    "format": "turbo _format",
+    "_format.fix": "prettier --write '**/*.{md,{j,t}s?(x),y?(a)ml,json,sol}'",
+    "format.fix": "turbo _format.fix"
   }
 }

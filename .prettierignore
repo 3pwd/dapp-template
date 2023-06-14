@@ -1,12 +1,11 @@
 node_modules
 pnpm-lock.yaml
 
-# TS build dir
-build
-dist
+ui/.next
+contracts/out
 
-# Jest
-coverage
-
-# JetBrains IDE
 .idea
+
+contracts/lib/forge-std
+
+cache

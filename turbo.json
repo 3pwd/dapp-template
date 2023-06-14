@@ -3,25 +3,32 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["ui/.next/**", "ui/src/generated.ts", "contracts/out/**/*.json", "!.next/cache/**"]
+      "outputs": [
+        "ui/.next/**",
+        "ui/src/generated.ts",
+        "contracts/out/**/*.json",
+        "!.next/cache/**"
+      ]
     },
     "lint": {
       "inputs": ["src/**/*.{js,jsx,ts,tsx}", "contracts/**/*.sol"]
     },
-    "format": {
+    "//#_format": {
       "inputs": [
-        "src/**/*.{js,jsx,ts,tsx}",
-        "contracts/{lib,script,src,test}/*.sol",
+        "*.{md,json,{j,t}s?(x),sol,y?(a)ml}",
+        "{contracts,ui}/**/*.{md,json,{j,t}s?(x),sol,y?(a)ml}",
         "!contracts/lib/forge-std/**/*",
-        "*.{json,md,yml,yaml}"
+        "!ui/.next/**/*",
+        "!contracts/out/**/*"
       ]
     },
-    "format.fix": {
+    "//#_format.fix": {
       "inputs": [
-        "src/**/*.{js,jsx,ts,tsx}",
-        "contracts/{lib,script,src,test}/*.sol",
+        "*.{md,json,{j,t}s?(x),sol,y?(a)ml}",
+        "{contracts,ui}/**/*.{md,json,{j,t}s?(x),sol,y?(a)ml}",
         "!contracts/lib/forge-std/**/*",
-        "**/*.{js,json,md,yml,yaml}"
+        "!ui/.next/**/*",
+        "!contracts/out/**/*"
       ]
     }
   }

@@ -10,7 +10,6 @@ module.exports = {
       options: {
         parser: 'solidity-parse',
       },
-      excludeFiles: ['contracts/lib/forge-std/**/*.sol'],
     },
   ],
 }
