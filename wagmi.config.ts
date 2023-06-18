@@ -1,5 +1,6 @@
 import { defineConfig } from '@wagmi/cli'
 import { foundry, react } from '@wagmi/cli/plugins'
+import { join } from 'path'
 import * as chains from 'wagmi/chains'
 
 export default defineConfig({
@@ -13,7 +14,7 @@ export default defineConfig({
           [chains.foundry.id]: '0xbe18A1B61ceaF59aEB6A9bC81AB4FB87D56Ba167',
         },
       },
-      project: './contracts',
+      project: join(__dirname, 'contracts'),
     }),
     react(),
   ],

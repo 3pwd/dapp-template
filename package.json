@@ -13,7 +13,15 @@
   "scripts": {
     "barrels": "barrelsby --config .barrelsby.json",
     "build": "turbo build",
-    "format": "turbo format",
-    "format.fix": "turbo format.fix"
+    "_format": "prettier --check .",
+    "_format.fix": "prettier --write .",
+    "format": "turbo _format",
+    "format.fix": "turbo _format.fix",
+    "_lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "_lint.fix": "eslint --ext .ts,.tsx --fix .",
+    "lint": "turbo _lint",
+    "lint.fix": "turbo _lint.fix",
+    "test": "turbo test",
+    "validate": "turbo build _format _lint"
   }
 }
