@@ -1,10 +1,16 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "baseUrl": ".",
     "paths": {
-      "~": ["src/components"]
+      "~": [
+        "src/components"
+      ]
     },
     "plugins": [
       {
@@ -12,5 +18,12 @@
       }
     ]
   },
-  "include": ["src", "next.config.js", ".next/types/**/*.ts"]
+  "include": [
+    "src",
+    "next.config.js",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

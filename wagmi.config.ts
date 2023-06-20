@@ -4,7 +4,7 @@ import { join } from 'path'
 import * as chains from 'wagmi/chains'
 
 export default defineConfig({
-  out: 'ui/src/generated.ts',
+  out: '../ui/src/generated.ts',
   plugins: [
     foundry({
       deployments: {
