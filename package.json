@@ -8,7 +8,8 @@
   },
   "scripts": {
     "barrels": "barrelsby --config .barrelsby.json",
-    "fmt": "dprint fmt"
+    "fmt": "dprint fmt",
+    "lint": "biome lint --config-path=.biome.jsonc"
   },
   "workspaces": ["contracts", "ui"]
 }
