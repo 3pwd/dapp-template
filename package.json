@@ -9,7 +9,7 @@
   "scripts": {
     "barrels": "barrelsby --config .barrelsby.json",
     "fmt": "dprint fmt",
-    "lint": "biome lint --config-path=.biome.jsonc"
+    "lint": "concurrently -g -c auto -n solhint,biome 'bun run --filter contracts lint' 'biome lint --config-path=.biome.jsonc'"
   },
   "workspaces": ["contracts", "ui"]
 }
