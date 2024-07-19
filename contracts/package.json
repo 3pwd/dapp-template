@@ -1,9 +1,5 @@
 {
   "name": "contracts",
-  "version": "1.0.0",
-  "devDependencies": {
-    "solhint": "^3.4.1"
-  },
   "scripts": {
     "build": "wagmi generate --root ..",
     "deploy": "source ../.env && forge create ../contracts/src/Counter.sol:Counter --rpc-url $FORGE_RPC_URL --private-key $FORGE_PRIVATE_KEY --etherscan-api-key $ETHERSCAN_API_KEY --verify",
@@ -13,5 +9,8 @@
     "_lint": "solhint '**/*.sol'",
     "_lint.fix": "solhint --fix '**/*.sol'",
     "test": "forge test"
+  },
+  "devDependencies": {
+    "solhint": "^5.0.1"
   }
 }

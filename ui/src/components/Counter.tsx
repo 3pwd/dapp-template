@@ -91,9 +91,7 @@ function ProcessingMessage({ hash }: { hash?: `0x${string}` }) {
   return (
     <span>
       Processing transaction...{' '}
-      {etherscan !== undefined && hash !== undefined && (
-        <a href={`${etherscan.url}/tx/${hash}`}>{etherscan.name}</a>
-      )}
+      {etherscan !== undefined && hash !== undefined && <a href={`${etherscan.url}/tx/${hash}`}>{etherscan.name}</a>}
     </span>
   )
 }
