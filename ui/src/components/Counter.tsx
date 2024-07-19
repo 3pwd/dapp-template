@@ -52,6 +52,7 @@ function SetNumber() {
         value={value}
       />
       <button
+        type='button'
         disabled={write === undefined || isLoading}
         onClick={() => write?.()}
       >
@@ -75,6 +76,7 @@ function Increment() {
   return (
     <div>
       <button
+        type='button'
         disabled={write === undefined || isLoading}
         onClick={() => write?.()}
       >

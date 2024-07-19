@@ -1,6 +1,6 @@
 'use client'
 
-import { BaseError } from 'viem'
+import type { BaseError } from 'viem'
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
 
 export function Connect() {
@@ -12,7 +12,7 @@ export function Connect() {
     <div>
       <div>
         {isConnected && (
-          <button onClick={() => disconnect()}>
+          <button type='button' onClick={() => disconnect()}>
             Disconnect from {connector?.name}
           </button>
         )}
@@ -20,7 +20,7 @@ export function Connect() {
         {connectors
           .filter((x) => x.ready && x.id !== connector?.id)
           .map((x) => (
-            <button key={x.id} onClick={() => connect({ connector: x })}>
+            <button type='button' key={x.id} onClick={() => connect({ connector: x })}>
               {x.name}
               {isLoading && x.id === pendingConnector?.id && ' (connecting)'}
             </button>

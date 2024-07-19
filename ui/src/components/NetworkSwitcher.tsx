@@ -1,6 +1,6 @@
 'use client'
 
-import { BaseError } from 'viem'
+import type { BaseError } from 'viem'
 import { useNetwork, useSwitchNetwork } from 'wagmi'
 
 export function NetworkSwitcher() {
@@ -18,7 +18,7 @@ export function NetworkSwitcher() {
         <div>
           {chains.map((x) =>
             x.id === chain?.id ? null : (
-              <button key={x.id} onClick={() => switchNetwork(x.id)}>
+              <button type='button' key={x.id} onClick={() => switchNetwork(x.id)}>
                 {x.name}
                 {isLoading && x.id === pendingChainId && ' (switching)'}
               </button>
