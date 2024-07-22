@@ -7,7 +7,12 @@
     "dprint": "^0.47.2"
   },
   "scripts": {
+    "anvil": "anvil --fork-url $ANVIL_FORK_URL --chain-id $ANVIL_CHAIN_ID",
     "barrels": "barrelsby --config .barrelsby.json",
+    "build": "wagmi generate",
+    "dev": "bun run build && bun --filter ui dev",
+    "dev.foundry": "wagmi generate --watch & bun anvil & bun --filter ui dev",
+    "check": "dprint check",
     "fmt": "dprint fmt",
     "lint": "concurrently -g -c auto -n solhint,biome 'bun run --filter contracts lint' 'biome lint --config-path=.biome.jsonc'"
   },

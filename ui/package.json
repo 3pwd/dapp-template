@@ -6,13 +6,11 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "viem": "^2.17.3",
-    "wagmi": "^2.10.10"
+    "wagmi": "^2.11.3"
   },
   "scripts": {
-    "anvil": "source .env && anvil --fork-url $ANVIL_FORK_URL --chain-id $ANVIL_CHAIN_ID",
     "build": "next build",
-    "dev": "wagmi generate && next dev",
-    "dev:foundry": "npm run dev & wagmi generate --watch & npm run anvil",
+    "dev": "next dev",
     "start": "next start"
   },
   "devDependencies": {
