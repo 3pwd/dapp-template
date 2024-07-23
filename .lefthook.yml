@@ -1,0 +1,10 @@
+assert_lefthook_installed: true
+
+pre-commit:
+  parallel: true
+  files: git diff --name-only HEAD
+  commands:
+    fmt:
+      run: bun dprint fmt
+#    lint:
+#      run: bun biome --lint --files-ignore-unknown=true --no-errors-on-unmatched

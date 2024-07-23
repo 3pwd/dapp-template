@@ -1,9 +1,9 @@
 {
   "name": "dapp-template",
   "devDependencies": {
-    "dprint": "^0.47.2"
+    "@biomejs/biome": "1.8.3",
+    "dprint": "^0.47.2",
+    "lefthook": "^1.7.5"
   },
-  "scripts": {
-    "fmt": "dprint fmt"
-  }
+  "scripts": {}
 }
