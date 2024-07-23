@@ -6,5 +6,5 @@ pre-commit:
   commands:
     fmt:
       run: bun dprint fmt
-#    lint:
-#      run: bun biome --lint --files-ignore-unknown=true --no-errors-on-unmatched
+    lint:
+      run: bun biome lint --files-ignore-unknown=true --no-errors-on-unmatched
