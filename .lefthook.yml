@@ -2,9 +2,9 @@ assert_lefthook_installed: true
 
 pre-commit:
   parallel: true
-  files: git diff --name-only HEAD
   commands:
     fmt:
       run: bun dprint fmt
+      staged_fixed: true
     lint:
-      run: bun biome lint --files-ignore-unknown=true --no-errors-on-unmatched
+      run: bun biome lint --config-path=.biome.jsonc --no-errors-on-unmatched
