@@ -1,5 +1,5 @@
 assert_lefthook_installed: true
-
+output: [execution, failure, summary]
 pre-commit:
   parallel: true
   commands:
@@ -10,4 +10,4 @@ pre-commit:
       run: bun biome lint --config-path=.biome.jsonc --no-errors-on-unmatched
     lint-sol:
       glob: 'contracts/**/*\.sol'
-      run: bun solhint --config contracts/.solhint.json
+      run: bun solhint --config contracts/.solhint.json {staged_files}
