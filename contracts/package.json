@@ -1,6 +1,5 @@
 {
   "name": "contracts",
-  "version": "1.0.0",
   "devDependencies": {
     "solhint": "^3.4.1"
   },
@@ -10,7 +9,7 @@
     "deploy.anvil": "source ../.env && forge create ../contracts/src/Counter.sol:Counter --rpc-url http://127.0.0.1:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80",
     "_format": "forge fmt --check --root ..",
     "_format.fix": "forge fmt --root ..",
-    "_lint": "solhint '**/*.sol'",
+    "lint": "solhint '{src,test}/**/*.sol'",
     "_lint.fix": "solhint --fix '**/*.sol'",
     "test": "forge test"
   }

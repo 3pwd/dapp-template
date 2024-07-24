@@ -5,6 +5,9 @@ pre-commit:
   commands:
     fmt:
       run: bun dprint fmt
-      staged_fixed: true
+      stage_fixed: true
     lint:
       run: bun biome lint --config-path=.biome.jsonc --no-errors-on-unmatched
+    lint-sol:
+      glob: 'contracts/**/*\.sol'
+      run: bun solhint --config contracts/.solhint.json

@@ -5,5 +5,7 @@
     "dprint": "^0.47.2",
     "lefthook": "^1.7.5"
   },
-  "scripts": {}
+  "scripts": {
+  },
+  "workspaces": ["contracts"]
 }
