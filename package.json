@@ -10,5 +10,5 @@
     "fix": "bun run --filter '*' fix",
     "test": "bun run --filter '*' test"
   },
-  "workspaces": ["contracts"]
+  "workspaces": ["contracts", "ui"]
 }

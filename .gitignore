@@ -1,5 +1,6 @@
 cache
 lib
+.next
 node_modules
 out
 lcov.info
