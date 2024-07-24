@@ -6,6 +6,9 @@
     "lefthook": "^1.7.5"
   },
   "scripts": {
+    "build": "bun run --filter '*' build",
+    "fix": "bun run --filter '*' fix",
+    "test": "bun run --filter '*' test"
   },
   "workspaces": ["contracts"]
 }
