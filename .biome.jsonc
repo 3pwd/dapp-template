@@ -1,0 +1,23 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "files": {
+    "ignoreUnknown": true,
+  },
+  // handle by dprint
+  "formatter": { "enabled": false },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+    },
+  },
+  // handle by dprint
+  "organizeImports": {
+    "enabled": false,
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+  },
+}

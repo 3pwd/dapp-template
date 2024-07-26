@@ -1,6 +1,0 @@
-{
-  "directory": ["ui/src/components"],
-  "singleQuotes": true,
-  "noSemiColons": true,
-  "noHeader": true
-}

@@ -1,19 +1,13 @@
-import { Account, Connect, Connected, Counter, NetworkSwitcher } from '~'
+'use client'
 
-export default function Page() {
-  return (
-    <>
-      <h1>wagmi + Next.js + Foundry</h1>
+import { Count, Increment, Layout, SetNumber } from '~'
 
-      <Connect />
+const App = () => (
+  <Layout>
+    <Count />
+    <Increment />
+    <SetNumber />
+  </Layout>
+)
 
-      <Connected>
-        <Account />
-        <hr />
-        <Counter />
-        <hr />
-        <NetworkSwitcher />
-      </Connected>
-    </>
-  )
-}
+export default App
