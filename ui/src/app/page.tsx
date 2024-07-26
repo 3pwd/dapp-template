@@ -1,16 +1,15 @@
 'use client'
 
-import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { useAccount, useDisconnect } from 'wagmi'
 
 function App() {
   const account = useAccount()
-  const { connectors, connect, status, error } = useConnect()
   const { disconnect } = useDisconnect()
 
   return (
     <>
       <div>
-        <h2>Account</h2>
+        <h2 className='underline text-lg'>Account</h2>
 
         <w3m-button />
         <div>

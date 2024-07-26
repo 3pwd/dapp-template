@@ -1,9 +1,9 @@
-import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { headers } from 'next/headers'
 import type { ReactNode } from 'react'
 import { cookieToInitialState } from 'wagmi'
+import '../assets/globals.css'
 
 import { metadata as _metadata, wagmiConfig } from '@/config'
 import { Providers } from './providers'
