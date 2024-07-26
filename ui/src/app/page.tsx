@@ -1,12 +1,12 @@
 'use client'
 
-import { Count, Increment, Layout } from '~'
+import { Count, Increment, Layout, SetNumber } from '~'
 
 const App = () => (
   <Layout>
-    <p>foo</p>
     <Count />
     <Increment />
+    <SetNumber />
   </Layout>
 )
 
