@@ -1,271 +1,25 @@
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// CompilationScript
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import {
+  createReadContract,
+  createSimulateContract,
+  createWatchContractEvent,
+  createWriteContract,
+} from '@wagmi/core/codegen'
 
-export const compilationScriptAbi = [
-  {
-    type: 'function',
-    inputs: [],
-    name: 'IS_SCRIPT',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'view',
-  },
-] as const
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// CompilationTest
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-export const compilationTestAbi = [
-  {
-    type: 'function',
-    inputs: [],
-    name: 'IS_TEST',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'failed',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'string', type: 'string', indexed: false },
-    ],
-    name: 'log',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'address', type: 'address', indexed: false },
-    ],
-    name: 'log_address',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: 'val',
-        internalType: 'uint256[]',
-        type: 'uint256[]',
-        indexed: false,
-      },
-    ],
-    name: 'log_array',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: 'val',
-        internalType: 'int256[]',
-        type: 'int256[]',
-        indexed: false,
-      },
-    ],
-    name: 'log_array',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: 'val',
-        internalType: 'address[]',
-        type: 'address[]',
-        indexed: false,
-      },
-    ],
-    name: 'log_array',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
-    ],
-    name: 'log_bytes',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'bytes32', type: 'bytes32', indexed: false },
-    ],
-    name: 'log_bytes32',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'int256', type: 'int256', indexed: false },
-    ],
-    name: 'log_int',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'address', type: 'address', indexed: false },
-    ],
-    name: 'log_named_address',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      {
-        name: 'val',
-        internalType: 'uint256[]',
-        type: 'uint256[]',
-        indexed: false,
-      },
-    ],
-    name: 'log_named_array',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      {
-        name: 'val',
-        internalType: 'int256[]',
-        type: 'int256[]',
-        indexed: false,
-      },
-    ],
-    name: 'log_named_array',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      {
-        name: 'val',
-        internalType: 'address[]',
-        type: 'address[]',
-        indexed: false,
-      },
-    ],
-    name: 'log_named_array',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'bytes', type: 'bytes', indexed: false },
-    ],
-    name: 'log_named_bytes',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'bytes32', type: 'bytes32', indexed: false },
-    ],
-    name: 'log_named_bytes32',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
-      {
-        name: 'decimals',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'log_named_decimal_int',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
-      {
-        name: 'decimals',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'log_named_decimal_uint',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
-    ],
-    name: 'log_named_int',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'string', type: 'string', indexed: false },
-    ],
-    name: 'log_named_string',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
-    ],
-    name: 'log_named_uint',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'string', type: 'string', indexed: false },
-    ],
-    name: 'log_string',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'uint256', type: 'uint256', indexed: false },
-    ],
-    name: 'log_uint',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
-    ],
-    name: 'logs',
-  },
-] as const
+import {
+  createUseReadContract,
+  createUseSimulateContract,
+  createUseWatchContractEvent,
+  createUseWriteContract,
+} from 'wagmi/codegen'
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Counter
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
 export const counterAbi = [
   {
     type: 'function',
@@ -304,6 +58,24 @@ export const counterAbi = [
     name: 'Transfer',
   },
 ] as const
+
+/**
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const counterAddress = {
+  31337: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+  11155111: '0xec6664DF322AF867b32F734478e2e14197318A78',
+} as const
+
+/**
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const counterConfig = {
+  address: counterAddress,
+  abi: counterAbi,
+} as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // DSTest
@@ -475,900 +247,593 @@ export const dsTestAbi = [
 ] as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// DemoTest
+// Action
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export const demoTestAbi = [
-  {
-    type: 'function',
-    inputs: [],
-    name: 'IS_TEST',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 's1', internalType: 'string', type: 'string' },
-      { name: 's2', internalType: 'string', type: 'string' },
-    ],
-    name: 'echo',
-    outputs: [
-      { name: '', internalType: 'string', type: 'string' },
-      { name: '', internalType: 'string', type: 'string' },
-    ],
-    stateMutability: 'pure',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'failed',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'x', internalType: 'uint256', type: 'uint256' }],
-    name: 'prove_this',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'test_asserts',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'test_events',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'test_logn',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'test_logs',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'test_multiline',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'test_old_logs',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'test_this',
-    outputs: [],
-    stateMutability: 'pure',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'test_trace',
-    outputs: [],
-    stateMutability: 'view',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'uint256', type: 'uint256', indexed: false },
-      { name: '', internalType: 'uint256', type: 'uint256', indexed: true },
-      { name: '', internalType: 'uint256', type: 'uint256', indexed: false },
-      { name: '', internalType: 'uint256', type: 'uint256', indexed: true },
-    ],
-    name: 'MyEvent',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'string', type: 'string', indexed: false },
-    ],
-    name: 'log',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'address', type: 'address', indexed: false },
-    ],
-    name: 'log_address',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
-    ],
-    name: 'log_bytes',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'bytes32', type: 'bytes32', indexed: false },
-    ],
-    name: 'log_bytes32',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'int256', type: 'int256', indexed: false },
-    ],
-    name: 'log_int',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'address', type: 'address', indexed: false },
-    ],
-    name: 'log_named_address',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'bytes', type: 'bytes', indexed: false },
-    ],
-    name: 'log_named_bytes',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'bytes32', type: 'bytes32', indexed: false },
-    ],
-    name: 'log_named_bytes32',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
-      {
-        name: 'decimals',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'log_named_decimal_int',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
-      {
-        name: 'decimals',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'log_named_decimal_uint',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'int256', type: 'int256', indexed: false },
-    ],
-    name: 'log_named_int',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'string', type: 'string', indexed: false },
-    ],
-    name: 'log_named_string',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'key', internalType: 'string', type: 'string', indexed: false },
-      { name: 'val', internalType: 'uint256', type: 'uint256', indexed: false },
-    ],
-    name: 'log_named_uint',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'bytes32', type: 'bytes32', indexed: false },
-      { name: '', internalType: 'uint256', type: 'uint256', indexed: false },
-    ],
-    name: 'log_old_named_uint',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'string', type: 'string', indexed: false },
-    ],
-    name: 'log_string',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'uint256', type: 'uint256', indexed: false },
-    ],
-    name: 'log_uint',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: '', internalType: 'bytes', type: 'bytes', indexed: false },
-    ],
-    name: 'logs',
-  },
-] as const
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link counterAbi}__
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const readCounter = /*#__PURE__*/ createReadContract({
+  abi: counterAbi,
+  address: counterAddress,
+})
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link counterAbi}__ and `functionName` set to `"number"`
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const readCounterNumber = /*#__PURE__*/ createReadContract({
+  abi: counterAbi,
+  address: counterAddress,
+  functionName: 'number',
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link counterAbi}__
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const writeCounter = /*#__PURE__*/ createWriteContract({
+  abi: counterAbi,
+  address: counterAddress,
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link counterAbi}__ and `functionName` set to `"increment"`
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const writeCounterIncrement = /*#__PURE__*/ createWriteContract({
+  abi: counterAbi,
+  address: counterAddress,
+  functionName: 'increment',
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link counterAbi}__ and `functionName` set to `"setNumber"`
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const writeCounterSetNumber = /*#__PURE__*/ createWriteContract({
+  abi: counterAbi,
+  address: counterAddress,
+  functionName: 'setNumber',
+})
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link counterAbi}__
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const simulateCounter = /*#__PURE__*/ createSimulateContract({
+  abi: counterAbi,
+  address: counterAddress,
+})
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link counterAbi}__ and `functionName` set to `"increment"`
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const simulateCounterIncrement = /*#__PURE__*/ createSimulateContract({
+  abi: counterAbi,
+  address: counterAddress,
+  functionName: 'increment',
+})
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link counterAbi}__ and `functionName` set to `"setNumber"`
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const simulateCounterSetNumber = /*#__PURE__*/ createSimulateContract({
+  abi: counterAbi,
+  address: counterAddress,
+  functionName: 'setNumber',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link counterAbi}__
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const watchCounterEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: counterAbi,
+  address: counterAddress,
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link counterAbi}__ and `eventName` set to `"Transfer"`
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const watchCounterTransferEvent = /*#__PURE__*/ createWatchContractEvent(
+  { abi: counterAbi, address: counterAddress, eventName: 'Transfer' },
+)
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link dsTestAbi}__
+ */
+export const readDsTest = /*#__PURE__*/ createReadContract({ abi: dsTestAbi })
+
+/**
+ * Wraps __{@link readContract}__ with `abi` set to __{@link dsTestAbi}__ and `functionName` set to `"IS_TEST"`
+ */
+export const readDsTestIsTest = /*#__PURE__*/ createReadContract({
+  abi: dsTestAbi,
+  functionName: 'IS_TEST',
+})
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link dsTestAbi}__
+ */
+export const writeDsTest = /*#__PURE__*/ createWriteContract({ abi: dsTestAbi })
+
+/**
+ * Wraps __{@link writeContract}__ with `abi` set to __{@link dsTestAbi}__ and `functionName` set to `"failed"`
+ */
+export const writeDsTestFailed = /*#__PURE__*/ createWriteContract({
+  abi: dsTestAbi,
+  functionName: 'failed',
+})
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link dsTestAbi}__
+ */
+export const simulateDsTest = /*#__PURE__*/ createSimulateContract({
+  abi: dsTestAbi,
+})
+
+/**
+ * Wraps __{@link simulateContract}__ with `abi` set to __{@link dsTestAbi}__ and `functionName` set to `"failed"`
+ */
+export const simulateDsTestFailed = /*#__PURE__*/ createSimulateContract({
+  abi: dsTestAbi,
+  functionName: 'failed',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__
+ */
+export const watchDsTestEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log"`
+ */
+export const watchDsTestLogEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_address"`
+ */
+export const watchDsTestLogAddressEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_address',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_bytes"`
+ */
+export const watchDsTestLogBytesEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_bytes',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_bytes32"`
+ */
+export const watchDsTestLogBytes32Event = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_bytes32',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_int"`
+ */
+export const watchDsTestLogIntEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_int',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_address"`
+ */
+export const watchDsTestLogNamedAddressEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_address',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_bytes"`
+ */
+export const watchDsTestLogNamedBytesEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_bytes',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_bytes32"`
+ */
+export const watchDsTestLogNamedBytes32Event = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_bytes32',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_decimal_int"`
+ */
+export const watchDsTestLogNamedDecimalIntEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_decimal_int',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_decimal_uint"`
+ */
+export const watchDsTestLogNamedDecimalUintEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_decimal_uint',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_int"`
+ */
+export const watchDsTestLogNamedIntEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_int',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_string"`
+ */
+export const watchDsTestLogNamedStringEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_string',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_uint"`
+ */
+export const watchDsTestLogNamedUintEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_uint',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_string"`
+ */
+export const watchDsTestLogStringEvent = /*#__PURE__*/ createWatchContractEvent(
+  { abi: dsTestAbi, eventName: 'log_string' },
+)
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_uint"`
+ */
+export const watchDsTestLogUintEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_uint',
+})
+
+/**
+ * Wraps __{@link watchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"logs"`
+ */
+export const watchDsTestLogsEvent = /*#__PURE__*/ createWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'logs',
+})
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// DemoTestWithSetUp
+// React
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export const demoTestWithSetUpAbi = [
-  {
-    type: 'function',
-    inputs: [],
-    name: 'setUp',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'test_pass',
-    outputs: [],
-    stateMutability: 'pure',
-  },
-] as const
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link counterAbi}__
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const useReadCounter = /*#__PURE__*/ createUseReadContract({
+  abi: counterAbi,
+  address: counterAddress,
+})
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// IERC1155
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link counterAbi}__ and `functionName` set to `"number"`
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const useReadCounterNumber = /*#__PURE__*/ createUseReadContract({
+  abi: counterAbi,
+  address: counterAddress,
+  functionName: 'number',
+})
 
-export const ierc1155Abi = [
-  {
-    type: 'function',
-    inputs: [
-      { name: '_owner', internalType: 'address', type: 'address' },
-      { name: '_id', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'balanceOf',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: '_owners', internalType: 'address[]', type: 'address[]' },
-      { name: '_ids', internalType: 'uint256[]', type: 'uint256[]' },
-    ],
-    name: 'balanceOfBatch',
-    outputs: [{ name: '', internalType: 'uint256[]', type: 'uint256[]' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: '_owner', internalType: 'address', type: 'address' },
-      { name: '_operator', internalType: 'address', type: 'address' },
-    ],
-    name: 'isApprovedForAll',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: '_from', internalType: 'address', type: 'address' },
-      { name: '_to', internalType: 'address', type: 'address' },
-      { name: '_ids', internalType: 'uint256[]', type: 'uint256[]' },
-      { name: '_values', internalType: 'uint256[]', type: 'uint256[]' },
-      { name: '_data', internalType: 'bytes', type: 'bytes' },
-    ],
-    name: 'safeBatchTransferFrom',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: '_from', internalType: 'address', type: 'address' },
-      { name: '_to', internalType: 'address', type: 'address' },
-      { name: '_id', internalType: 'uint256', type: 'uint256' },
-      { name: '_value', internalType: 'uint256', type: 'uint256' },
-      { name: '_data', internalType: 'bytes', type: 'bytes' },
-    ],
-    name: 'safeTransferFrom',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: '_operator', internalType: 'address', type: 'address' },
-      { name: '_approved', internalType: 'bool', type: 'bool' },
-    ],
-    name: 'setApprovalForAll',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'interfaceID', internalType: 'bytes4', type: 'bytes4' }],
-    name: 'supportsInterface',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: '_owner',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: '_operator',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      { name: '_approved', internalType: 'bool', type: 'bool', indexed: false },
-    ],
-    name: 'ApprovalForAll',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: '_operator',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: '_from',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      { name: '_to', internalType: 'address', type: 'address', indexed: true },
-      {
-        name: '_ids',
-        internalType: 'uint256[]',
-        type: 'uint256[]',
-        indexed: false,
-      },
-      {
-        name: '_values',
-        internalType: 'uint256[]',
-        type: 'uint256[]',
-        indexed: false,
-      },
-    ],
-    name: 'TransferBatch',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: '_operator',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: '_from',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      { name: '_to', internalType: 'address', type: 'address', indexed: true },
-      { name: '_id', internalType: 'uint256', type: 'uint256', indexed: false },
-      {
-        name: '_value',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'TransferSingle',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: '_value',
-        internalType: 'string',
-        type: 'string',
-        indexed: false,
-      },
-      { name: '_id', internalType: 'uint256', type: 'uint256', indexed: true },
-    ],
-    name: 'URI',
-  },
-] as const
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link counterAbi}__
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const useWriteCounter = /*#__PURE__*/ createUseWriteContract({
+  abi: counterAbi,
+  address: counterAddress,
+})
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// IERC4626
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link counterAbi}__ and `functionName` set to `"increment"`
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const useWriteCounterIncrement = /*#__PURE__*/ createUseWriteContract({
+  abi: counterAbi,
+  address: counterAddress,
+  functionName: 'increment',
+})
 
-export const ierc4626Abi = [
-  {
-    type: 'function',
-    inputs: [
-      { name: 'owner', internalType: 'address', type: 'address' },
-      { name: 'spender', internalType: 'address', type: 'address' },
-    ],
-    name: 'allowance',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'spender', internalType: 'address', type: 'address' },
-      { name: 'amount', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'approve',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'asset',
-    outputs: [
-      { name: 'assetTokenAddress', internalType: 'address', type: 'address' },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'account', internalType: 'address', type: 'address' }],
-    name: 'balanceOf',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'shares', internalType: 'uint256', type: 'uint256' }],
-    name: 'convertToAssets',
-    outputs: [{ name: 'assets', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'assets', internalType: 'uint256', type: 'uint256' }],
-    name: 'convertToShares',
-    outputs: [{ name: 'shares', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'decimals',
-    outputs: [{ name: '', internalType: 'uint8', type: 'uint8' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'assets', internalType: 'uint256', type: 'uint256' },
-      { name: 'receiver', internalType: 'address', type: 'address' },
-    ],
-    name: 'deposit',
-    outputs: [{ name: 'shares', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'receiver', internalType: 'address', type: 'address' }],
-    name: 'maxDeposit',
-    outputs: [{ name: 'maxAssets', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'receiver', internalType: 'address', type: 'address' }],
-    name: 'maxMint',
-    outputs: [{ name: 'maxShares', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'owner', internalType: 'address', type: 'address' }],
-    name: 'maxRedeem',
-    outputs: [{ name: 'maxShares', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'owner', internalType: 'address', type: 'address' }],
-    name: 'maxWithdraw',
-    outputs: [{ name: 'maxAssets', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'shares', internalType: 'uint256', type: 'uint256' },
-      { name: 'receiver', internalType: 'address', type: 'address' },
-    ],
-    name: 'mint',
-    outputs: [{ name: 'assets', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'name',
-    outputs: [{ name: '', internalType: 'string', type: 'string' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'assets', internalType: 'uint256', type: 'uint256' }],
-    name: 'previewDeposit',
-    outputs: [{ name: 'shares', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'shares', internalType: 'uint256', type: 'uint256' }],
-    name: 'previewMint',
-    outputs: [{ name: 'assets', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'shares', internalType: 'uint256', type: 'uint256' }],
-    name: 'previewRedeem',
-    outputs: [{ name: 'assets', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'assets', internalType: 'uint256', type: 'uint256' }],
-    name: 'previewWithdraw',
-    outputs: [{ name: 'shares', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'shares', internalType: 'uint256', type: 'uint256' },
-      { name: 'receiver', internalType: 'address', type: 'address' },
-      { name: 'owner', internalType: 'address', type: 'address' },
-    ],
-    name: 'redeem',
-    outputs: [{ name: 'assets', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'symbol',
-    outputs: [{ name: '', internalType: 'string', type: 'string' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'totalAssets',
-    outputs: [
-      { name: 'totalManagedAssets', internalType: 'uint256', type: 'uint256' },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'totalSupply',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'to', internalType: 'address', type: 'address' },
-      { name: 'amount', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'transfer',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'from', internalType: 'address', type: 'address' },
-      { name: 'to', internalType: 'address', type: 'address' },
-      { name: 'amount', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'transferFrom',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'assets', internalType: 'uint256', type: 'uint256' },
-      { name: 'receiver', internalType: 'address', type: 'address' },
-      { name: 'owner', internalType: 'address', type: 'address' },
-    ],
-    name: 'withdraw',
-    outputs: [{ name: 'shares', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: 'owner',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'spender',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'value',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'Approval',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: 'sender',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'owner',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'assets',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-      {
-        name: 'shares',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'Deposit',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'from', internalType: 'address', type: 'address', indexed: true },
-      { name: 'to', internalType: 'address', type: 'address', indexed: true },
-      {
-        name: 'value',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'Transfer',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      {
-        name: 'sender',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'receiver',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'owner',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'assets',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-      {
-        name: 'shares',
-        internalType: 'uint256',
-        type: 'uint256',
-        indexed: false,
-      },
-    ],
-    name: 'Withdraw',
-  },
-] as const
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link counterAbi}__ and `functionName` set to `"setNumber"`
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const useWriteCounterSetNumber = /*#__PURE__*/ createUseWriteContract({
+  abi: counterAbi,
+  address: counterAddress,
+  functionName: 'setNumber',
+})
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// InvariantTest
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link counterAbi}__
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const useSimulateCounter = /*#__PURE__*/ createUseSimulateContract({
+  abi: counterAbi,
+  address: counterAddress,
+})
 
-export const invariantTestAbi = [
-  {
-    type: 'function',
-    inputs: [],
-    name: 'excludeArtifacts',
-    outputs: [
-      {
-        name: 'excludedArtifacts_',
-        internalType: 'string[]',
-        type: 'string[]',
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'excludeContracts',
-    outputs: [
-      {
-        name: 'excludedContracts_',
-        internalType: 'address[]',
-        type: 'address[]',
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'excludeSenders',
-    outputs: [
-      {
-        name: 'excludedSenders_',
-        internalType: 'address[]',
-        type: 'address[]',
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'targetArtifactSelectors',
-    outputs: [
-      {
-        name: 'targetedArtifactSelectors_',
-        internalType: 'struct InvariantTest.FuzzSelector[]',
-        type: 'tuple[]',
-        components: [
-          { name: 'addr', internalType: 'address', type: 'address' },
-          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
-        ],
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'targetArtifacts',
-    outputs: [
-      {
-        name: 'targetedArtifacts_',
-        internalType: 'string[]',
-        type: 'string[]',
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'targetContracts',
-    outputs: [
-      {
-        name: 'targetedContracts_',
-        internalType: 'address[]',
-        type: 'address[]',
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'targetSelectors',
-    outputs: [
-      {
-        name: 'targetedSelectors_',
-        internalType: 'struct InvariantTest.FuzzSelector[]',
-        type: 'tuple[]',
-        components: [
-          { name: 'addr', internalType: 'address', type: 'address' },
-          { name: 'selectors', internalType: 'bytes4[]', type: 'bytes4[]' },
-        ],
-      },
-    ],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'targetSenders',
-    outputs: [
-      {
-        name: 'targetedSenders_',
-        internalType: 'address[]',
-        type: 'address[]',
-      },
-    ],
-    stateMutability: 'view',
-  },
-] as const
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link counterAbi}__ and `functionName` set to `"increment"`
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const useSimulateCounterIncrement = /*#__PURE__*/ createUseSimulateContract({
+  abi: counterAbi,
+  address: counterAddress,
+  functionName: 'increment',
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link counterAbi}__ and `functionName` set to `"setNumber"`
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const useSimulateCounterSetNumber = /*#__PURE__*/ createUseSimulateContract({
+  abi: counterAbi,
+  address: counterAddress,
+  functionName: 'setNumber',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link counterAbi}__
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const useWatchCounterEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: counterAbi,
+  address: counterAddress,
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link counterAbi}__ and `eventName` set to `"Transfer"`
+ *
+ * -
+ * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0xec6664DF322AF867b32F734478e2e14197318A78)
+ */
+export const useWatchCounterTransferEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: counterAbi,
+  address: counterAddress,
+  eventName: 'Transfer',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link dsTestAbi}__
+ */
+export const useReadDsTest = /*#__PURE__*/ createUseReadContract({
+  abi: dsTestAbi,
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link dsTestAbi}__ and `functionName` set to `"IS_TEST"`
+ */
+export const useReadDsTestIsTest = /*#__PURE__*/ createUseReadContract({
+  abi: dsTestAbi,
+  functionName: 'IS_TEST',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link dsTestAbi}__
+ */
+export const useWriteDsTest = /*#__PURE__*/ createUseWriteContract({
+  abi: dsTestAbi,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link dsTestAbi}__ and `functionName` set to `"failed"`
+ */
+export const useWriteDsTestFailed = /*#__PURE__*/ createUseWriteContract({
+  abi: dsTestAbi,
+  functionName: 'failed',
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link dsTestAbi}__
+ */
+export const useSimulateDsTest = /*#__PURE__*/ createUseSimulateContract({
+  abi: dsTestAbi,
+})
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link dsTestAbi}__ and `functionName` set to `"failed"`
+ */
+export const useSimulateDsTestFailed = /*#__PURE__*/ createUseSimulateContract({
+  abi: dsTestAbi,
+  functionName: 'failed',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__
+ */
+export const useWatchDsTestEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log"`
+ */
+export const useWatchDsTestLogEvent = /*#__PURE__*/ createUseWatchContractEvent(
+  { abi: dsTestAbi, eventName: 'log' },
+)
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_address"`
+ */
+export const useWatchDsTestLogAddressEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_address',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_bytes"`
+ */
+export const useWatchDsTestLogBytesEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_bytes',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_bytes32"`
+ */
+export const useWatchDsTestLogBytes32Event = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_bytes32',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_int"`
+ */
+export const useWatchDsTestLogIntEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_int',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_address"`
+ */
+export const useWatchDsTestLogNamedAddressEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_address',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_bytes"`
+ */
+export const useWatchDsTestLogNamedBytesEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_bytes',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_bytes32"`
+ */
+export const useWatchDsTestLogNamedBytes32Event = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_bytes32',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_decimal_int"`
+ */
+export const useWatchDsTestLogNamedDecimalIntEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_decimal_int',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_decimal_uint"`
+ */
+export const useWatchDsTestLogNamedDecimalUintEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_decimal_uint',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_int"`
+ */
+export const useWatchDsTestLogNamedIntEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_int',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_string"`
+ */
+export const useWatchDsTestLogNamedStringEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_string',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_named_uint"`
+ */
+export const useWatchDsTestLogNamedUintEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_named_uint',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_string"`
+ */
+export const useWatchDsTestLogStringEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_string',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"log_uint"`
+ */
+export const useWatchDsTestLogUintEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'log_uint',
+})
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link dsTestAbi}__ and `eventName` set to `"logs"`
+ */
+export const useWatchDsTestLogsEvent = /*#__PURE__*/ createUseWatchContractEvent({
+  abi: dsTestAbi,
+  eventName: 'logs',
+})
