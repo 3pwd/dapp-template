@@ -12,6 +12,7 @@ function App() {
       <div>
         <h2>Account</h2>
 
+        <w3m-button />
         <div>
           status: {account.status}
           <br />
@@ -25,21 +26,6 @@ function App() {
             Disconnect
           </button>
         )}
-      </div>
-
-      <div>
-        <h2>Connect</h2>
-        {connectors.map((connector) => (
-          <button
-            key={connector.uid}
-            onClick={() => connect({ connector })}
-            type='button'
-          >
-            {connector.name}
-          </button>
-        ))}
-        <div>{status}</div>
-        <div>{error?.message}</div>
       </div>
     </>
   )

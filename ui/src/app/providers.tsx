@@ -1,23 +1,22 @@
 'use client'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { type ReactNode, useState } from 'react'
+import type { ReactNode } from 'react'
 import { type State, WagmiProvider } from 'wagmi'
 
-import { getConfig } from '@/wagmi'
+import { projectId, wagmiConfig } from '@/config'
+import { createWeb3Modal } from '@web3modal/wagmi'
 
-export function Providers(props: {
+const queryClient = new QueryClient()
+createWeb3Modal({ projectId, wagmiConfig })
+
+export const Providers = ({ children, initialState }: {
   children: ReactNode
   initialState?: State
-}) {
-  const [config] = useState(() => getConfig())
-  const [queryClient] = useState(() => new QueryClient())
-
-  return (
-    <WagmiProvider config={config} initialState={props.initialState}>
-      <QueryClientProvider client={queryClient}>
-        {props.children}
-      </QueryClientProvider>
-    </WagmiProvider>
-  )
-}
+}) => (
+  <WagmiProvider config={wagmiConfig} initialState={initialState}>
+    <QueryClientProvider client={queryClient}>
+      {children}
+    </QueryClientProvider>
+  </WagmiProvider>
+)

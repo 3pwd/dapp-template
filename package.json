@@ -10,5 +10,8 @@
     "fix": "bun run --filter '*' fix",
     "test": "bun run --filter '*' test"
   },
-  "workspaces": ["contracts", "ui"]
+  "workspaces": ["contracts", "ui"],
+  "dependencies": {
+    "@web3modal/wagmi": "^5.0.8"
+  }
 }
